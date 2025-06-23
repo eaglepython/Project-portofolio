@@ -4,7 +4,7 @@
 
 # Joseph Bidias – AI Research Scientist & Software Engineer Portfolio
 
-A futuristic, visually compelling portfolio website built with HTML5 and CSS3, showcasing expertise in biomedical AI, integrative medicine, and full-stack software engineering. This project highlights innovation at the intersection of healthcare and intelligent systems.
+A visually compelling portfolio website built with HTML5 and CSS3, showcasing expertise in biomedical AI, integrative medicine, and full-stack software engineering. This project highlights innovation at the intersection of healthcare and intelligent systems.
 
 ## 🚀 Overview
 
