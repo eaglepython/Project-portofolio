@@ -1,7 +1,7 @@
 ![image](https://github.com/user-attachments/assets/f10ae444-6080-4320-8f93-ecfed79dd10f)
 
 
-```markdown
+
 # Joseph Bidias – AI Research Scientist & Software Engineer Portfolio
 
 A futuristic, visually compelling portfolio website built with HTML5 and CSS3, showcasing expertise in biomedical AI, integrative medicine, and full-stack software engineering. This project highlights innovation at the intersection of healthcare and intelligent systems.
@@ -114,7 +114,3 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ```
 
----
-
-✅ You can copy and paste this into your `README.md` file. Let me know if you'd like it styled for a GitHub landing page (with badges, shield.io links, or GitHub Actions).
-```
