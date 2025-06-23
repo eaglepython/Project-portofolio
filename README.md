@@ -10,7 +10,7 @@ A visually immersive portfolio built with pure HTML and CSS to showcase my exper
 
 ## 🚀 Overview
 
-This project is a personal and academic showcase, developed as part of a class project, demonstrating how design, technology, and storytelling can converge to communicate advanced technical skills in a simple and engaging format.
+This project is a personal and professional showcase, developed as part of a class project, demonstrating how design, technology, and storytelling can converge to communicate advanced technical skills in a simple and engaging format.
 
 
 
