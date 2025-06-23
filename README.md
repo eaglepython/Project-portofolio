@@ -1,7 +1,7 @@
 
 # Joseph Bidias – AI Research Scientist & Software Engineer Portfolio
 
-🌐 **Live Demo**: [https://project-portofolio-phi.vercel.app](https://project-portofolio-phi.vercel.app)
+🌐 **Live Demo**: [https://project-portofolio-4ek3-8slvpw4ip-eaglepythons-projects.vercel.app](https://project-portofolio-4ek3-8slvpw4ip-eaglepythons-projects.vercel.app)
 
 A visually immersive portfolio built with pure HTML and CSS to showcase my expertise in biomedical AI, integrative medicine, and full-stack software engineering. Designed for maximum impact, this site features matrix-style animations, AI-inspired visuals, and accessibility-first design.
 
