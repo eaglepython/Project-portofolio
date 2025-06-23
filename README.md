@@ -47,7 +47,7 @@ portfolio/
 ├── biomedical\_ai\_innovation.png  # Section backdrop
 ├── README.md                 # Project documentation
 
-````
+
 
 ## ⚙️ Setup Instructions
 
