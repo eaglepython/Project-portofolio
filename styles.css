@@ -795,11 +795,8 @@ body::before {
 /* About Section */
 #about {
     position: relative;
-    background: url('biomedical_ai_innovation.png') center center/cover no-repeat;
+    background: url('value.png') center center/cover no-repeat;
     background-blend-mode: lighten;
-    /* Optional: add a dark overlay for better text contrast */
-    /* background-color: rgba(10, 14, 26, 0.85); */
-    /* background-blend-mode: overlay; */
     z-index: 1;
 }
 
@@ -807,8 +804,9 @@ body::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(10, 14, 26, 0.75); /* dark overlay for readability */
+    background: rgba(10, 14, 26, 0.75); /* overlay for readability */
     z-index: 0;
+    pointer-events: none;
 }
 
 #about > .container,
@@ -1306,7 +1304,7 @@ body::before {
     height: 100%;
     background:
         linear-gradient(to right, rgba(16,20,32,0.85) 0%, rgba(16,20,32,0.3) 65%, rgba(16,20,32,0) 100%),
-        url('Photo from Joseph B.jpg') center center/cover no-repeat;
+        url('Photo from Joseph B.jpg') left center/contain no-repeat;
     opacity: 0.18;
     z-index: 0;
     pointer-events: none;

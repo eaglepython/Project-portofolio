@@ -644,6 +644,10 @@
                             <i class="fab fa-orcid"></i>
                             <div class="social-ripple"></div>
                         </a>
+                        <a href="https://discord.com/users/YOUR_DISCORD_ID" class="social-link" title="Discord" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i>
+                            <div class="social-ripple"></div>
+                        </a>
                     </div>
                 </div>
                 
@@ -688,6 +692,23 @@
         </div> </div>
     </section>
 
-
+    <style>
+        #contact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50vw; /* covers the entire left half */
+    height: 100%;
+    background:
+        linear-gradient(to right, rgba(16,20,32,0.85) 0%, rgba(16,20,32,0.3) 65%, rgba(16,20,32,0) 100%),
+        url('Photo from Joseph B.jpg') center center/cover no-repeat;
+    opacity: 0.18;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(1.2px);
+    transition: opacity 0.5s;
+}
+    </style>
 </html></body></body>
 </html>
