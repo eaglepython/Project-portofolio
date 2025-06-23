@@ -1,0 +1,1586 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0a0e1a;
+    color: #ffffff;
+    overflow-x: hidden;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Soft transparent background image for the whole site */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -20;
+    background: url('we.png') center center/cover no-repeat;
+    opacity: 0.10; /* Soft transparency */
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+/* Matrix Background Container */
+.matrix-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    overflow: hidden;
+}
+
+/* Matrix Rain Effect */
+.matrix-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.matrix-column {
+    position: absolute;
+    top: -100%;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    color: #00ff88;
+    opacity: 0.15;
+    text-shadow: 0 0 5px #00ff88;
+    animation: matrixFall 15s linear infinite;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.matrix-column span {
+    display: block;
+    animation: matrixGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes matrixFall {
+    0% { transform: translateY(-100vh); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes matrixGlow {
+    0% { opacity: 0.1; text-shadow: 0 0 5px #00ff88; }
+    100% { opacity: 0.4; text-shadow: 0 0 15px #00ff88, 0 0 25px #00ff88; }
+}
+
+/* AI Data Streams */
+.ai-streams {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.data-stream {
+    position: absolute;
+    display: flex;
+    gap: 50px;
+    opacity: 0.1;
+    animation: streamFlow 20s linear infinite;
+}
+
+.stream-1 {
+    top: 20%;
+    left: -100%;
+    animation-delay: 0s;
+}
+
+.stream-2 {
+    top: 50%;
+    left: -100%;
+    animation-delay: 7s;
+}
+
+.stream-3 {
+    top: 80%;
+    left: -100%;
+    animation-delay: 14s;
+}
+
+.data-packet {
+    background: rgba(64, 224, 255, 0.1);
+    border: 1px solid rgba(64, 224, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: #40e0ff;
+    white-space: nowrap;
+    box-shadow: 0 0 20px rgba(64, 224, 255, 0.2);
+}
+
+@keyframes streamFlow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 400px)); }
+}
+
+/* Neural Network Background */
+.neural-network {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.05;
+}
+
+.neural-node {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #40e0ff;
+    box-shadow: 0 0 20px #40e0ff;
+    animation: neuralPulse 3s ease-in-out infinite;
+}
+
+.node-1 { top: 20%; left: 15%; animation-delay: 0s; }
+.node-2 { top: 40%; left: 30%; animation-delay: 0.6s; }
+.node-3 { top: 60%; left: 70%; animation-delay: 1.2s; }
+.node-4 { top: 80%; left: 85%; animation-delay: 1.8s; }
+.node-5 { top: 30%; left: 60%; animation-delay: 2.4s; }
+
+.neural-connection {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #40e0ff, transparent);
+    animation: connectionPulse 4s ease-in-out infinite;
+}
+
+.conn-1 { top: 20%; left: 15%; width: 200px; transform: rotate(25deg); animation-delay: 0s; }
+.conn-2 { top: 40%; left: 30%; width: 250px; transform: rotate(-15deg); animation-delay: 1s; }
+.conn-3 { top: 60%; left: 50%; width: 180px; transform: rotate(35deg); animation-delay: 2s; }
+.conn-4 { top: 80%; left: 70%; width: 150px; transform: rotate(-25deg); animation-delay: 3s; }
+
+@keyframes neuralPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+@keyframes connectionPulse {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.6; }
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 14, 26, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 1rem 5%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(64, 224, 255, 0.2);
+}
+
+.navbar:hover {
+    background: rgba(10, 14, 26, 0.95);
+    box-shadow: 0 5px 30px rgba(64, 224, 255, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Enhanced Logo with Glitch Effect */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #40e0ff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.logo i {
+    font-size: 1.5rem;
+    animation: doveFloat 3s ease-in-out infinite;
+}
+
+.logo-text {
+    position: relative;
+    display: inline-block;
+}
+
+.logo-main, .logo-glitch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, #40e0ff, #0080ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo-main {
+    position: relative;
+}
+
+.logo-glitch {
+    opacity: 0;
+    animation: glitchEffect 5s infinite;
+}
+
+@keyframes doveFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes glitchEffect {
+    0%, 98% { opacity: 0; transform: translate(0); }
+    99% { opacity: 1; transform: translate(2px, -1px); filter: hue-rotate(90deg); }
+    100% { opacity: 0; transform: translate(0); }
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+
+.nav-link::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #40e0ff;
+    opacity: 0;
+    transform: translate(2px, 2px);
+    animation: navGlitch 3s infinite;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #40e0ff;
+    background: rgba(64, 224, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(64, 224, 255, 0.2);
+}
+
+@keyframes navGlitch {
+    0%, 95% { opacity: 0; }
+    96%, 98% { opacity: 0.1; }
+    99% { opacity: 0; }
+}
+
+/* Main Sections */
+.section {
+    min-height: 100vh;
+    padding: 100px 5% 50px;
+    position: relative;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Hero Section */
+#hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Enhanced Profile Photo */
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem auto;
+    position: relative;
+}
+
+.photo-border {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    background: linear-gradient(45deg, #40e0ff, #0080ff);
+    padding: 4px;
+}
+
+.photo-border img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+}
+
+.scanning-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #40e0ff, transparent);
+    animation: scanningEffect 3s ease-in-out infinite;
+    z-index: 3;
+    border-radius: 50%;
+}
+
+.ai-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.recognition-grid {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: 
+        linear-gradient(90deg, transparent 48%, rgba(64, 224, 255, 0.2) 50%, transparent 52%),
+        linear-gradient(0deg, transparent 48%, rgba(64, 224, 255, 0.2) 50%, transparent 52%);
+    animation: gridScan 4s ease-in-out infinite;
+}
+
+@keyframes scanningEffect {
+    0% { transform: translateY(0) scaleX(0); }
+    50% { transform: translateY(200px) scaleX(1); }
+    100% { transform: translateY(400px) scaleX(0); }
+}
+
+@keyframes gridScan {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.3; }
+}
+
+/* Glitch Text Effect */
+.glitch-text {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    color: #ffffff;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    color: #ff0040;
+    animation: glitchBefore 3s infinite;
+    z-index: -1;
+}
+
+.glitch-text::after {
+    color: #00ffff;
+    animation: glitchAfter 3s infinite;
+    z-index: -2;
+}
+
+@keyframes glitchBefore {
+    0%, 96% { transform: translate(0); }
+    97% { transform: translate(-2px, 2px); }
+    98% { transform: translate(2px, -2px); }
+    99% { transform: translate(-1px, 1px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitchAfter {
+    0%, 96% { transform: translate(0); }
+    97% { transform: translate(2px, -2px); }
+    98% { transform: translate(-2px, 2px); }
+    99% { transform: translate(1px, -1px); }
+    100% { transform: translate(0); }
+}
+
+/* Enhanced Typewriter */
+.typewriter-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+}
+
+.terminal-prompt {
+    font-family: 'Fira Code', monospace;
+    color: #00ff88;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00ff88;
+}
+
+.typewriter {
+    font-size: 1.5rem;
+    color: #40e0ff;
+    font-weight: 600;
+    height: 2rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    font-family: 'Fira Code', monospace;
+}
+
+.typewriter-text {
+    animation: typewriter 4s steps(40) infinite;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.typewriter-cursor {
+    animation: cursorBlink 1s infinite;
+    margin-left: 2px;
+    color: #00ff88;
+    text-shadow: 0 0 5px #00ff88;
+}
+
+@keyframes typewriter {
+    0%, 90%, 100% { width: 0; }
+    30%, 60% { width: 100%; }
+}
+
+@keyframes cursorBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Enhanced Description */
+.description {
+    font-size: 1.2rem;
+    color: #b0c4de;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    position: relative;
+    padding: 1rem;
+    border-left: 2px solid rgba(64, 224, 255, 0.3);
+}
+
+.code-bracket {
+    font-family: 'Fira Code', monospace;
+    color: #40e0ff;
+    font-size: 1.4rem;
+    font-weight: bold;
+    display: block;
+    text-shadow: 0 0 5px #40e0ff;
+}
+
+/* Enhanced Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.cta-btn {
+    position: relative;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    display: inline-block;
+    overflow: hidden;
+    font-family: 'Fira Code', monospace;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #40e0ff, #0080ff);
+    color: #ffffff;
+    border: 2px solid transparent;
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(64, 224, 255, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #40e0ff;
+    border: 2px solid #40e0ff;
+}
+
+.btn-secondary:hover {
+    background: #40e0ff;
+    color: #0a0e1a;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(64, 224, 255, 0.3);
+}
+
+.btn-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.btn-particles::before,
+.btn-particles::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ffffff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFloat 2s infinite;
+}
+
+.btn-particles::before {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.btn-particles::after {
+    top: 70%;
+    right: 30%;
+    animation-delay: 1s;
+}
+
+.btn-scan-line {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(64, 224, 255, 0.3), transparent);
+    animation: scanLine 2s infinite;
+}
+
+@keyframes particleFloat {
+    0% { opacity: 0; transform: translateY(0); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
+@keyframes scanLine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Status Panel */
+.status-panel {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(26, 30, 46, 0.6);
+    border-radius: 10px;
+    border: 1px solid rgba(64, 224, 255, 0.2);
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff4444;
+    animation: statusPulse 2s infinite;
+}
+
+.status-dot.active {
+    background: #00ff88;
+    box-shadow: 0 0 10px #00ff88;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Innovation Image Section */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.innovation-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    animation: innovationFloat 6s ease-in-out infinite;
+}
+
+.innovation-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(64, 224, 255, 0.3);
+    box-shadow: 0 0 30px rgba(64, 224, 255, 0.2);
+}
+
+.innovation-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) contrast(1.1);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(64, 224, 255, 0.1);
+    pointer-events: none;
+}
+
+.tech-grid {
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, transparent 48%, rgba(64, 224, 255, 0.2) 50%, transparent 52%),
+        linear-gradient(0deg, transparent 48%, rgba(64, 224, 255, 0.2) 50%, transparent 52%);
+    background-size: 30px 30px;
+    animation: gridPulse 4s ease-in-out infinite;
+}
+
+.scan-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #40e0ff, transparent);
+    animation: scanOverlay 3s ease-in-out infinite;
+}
+
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floating-icon {
+    position: absolute;
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px rgba(64, 224, 255, 0.6));
+    animation: iconFloat 8s ease-in-out infinite;
+}
+
+.icon-1 { 
+    top: 10%; 
+    left: -10%; 
+    animation-delay: 0s; 
+}
+
+.icon-2 { 
+    top: 20%; 
+    right: -10%; 
+    animation-delay: 1.6s; 
+}
+
+.icon-3 { 
+    bottom: 30%; 
+    left: -15%; 
+    animation-delay: 3.2s; 
+}
+
+.icon-4 { 
+    bottom: 20%; 
+    right: -15%; 
+    animation-delay: 4.8s; 
+}
+
+.icon-5 { 
+    top: 50%; 
+    left: -20%; 
+    animation-delay: 6.4s; 
+}
+
+@keyframes innovationFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.02); }
+}
+
+@keyframes gridPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes scanOverlay {
+    0% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(200px); opacity: 0.8; }
+    100% { transform: translateY(400px); opacity: 0; }
+}
+
+@keyframes iconFloat {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+    25% { transform: translateY(-30px) translateX(20px) rotate(90deg); opacity: 1; }
+    50% { transform: translateY(-10px) translateX(40px) rotate(180deg); opacity: 0.8; }
+    75% { transform: translateY(-40px) translateX(60px) rotate(270deg); opacity: 0.6; }
+    100% { transform: translateY(-20px) translateX(80px) rotate(360deg); opacity: 0; }
+}
+
+/* About Section */
+#about {
+    position: relative;
+    background: url('biomedical_ai_innovation.png') center center/cover no-repeat;
+    background-blend-mode: lighten;
+    /* Optional: add a dark overlay for better text contrast */
+    /* background-color: rgba(10, 14, 26, 0.85); */
+    /* background-blend-mode: overlay; */
+    z-index: 1;
+}
+
+#about::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 14, 26, 0.75); /* dark overlay for readability */
+    z-index: 0;
+}
+
+#about > .container,
+#about * {
+    position: relative;
+    z-index: 1;
+}
+
+#about {
+    background: rgba(16, 20, 32, 0.8);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+#about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(64,224,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    color: #ffffff;
+    font-family: 'Fira Code', monospace;
+}
+
+.title-bracket {
+    color: #40e0ff;
+    text-shadow: 0 0 10px #40e0ff;
+}
+
+.title-underglow {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 4px;
+    background: linear-gradient(45deg, #40e0ff, #0080ff);
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(64, 224, 255, 0.5);
+}
+
+/* Enhanced Profile Card */
+.profile-card {
+    background: rgba(26, 30, 46, 0.8);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(64, 224, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(64, 224, 255, 0.05), transparent);
+    transform: rotate(45deg);
+    animation: cardShine 5s infinite;
+}
+
+.profile-card:hover {
+    transform: translateY(-10px);
+    border-color: #40e0ff;
+    box-shadow: 0 20px 40px rgba(64, 224, 255, 0.2);
+}
+
+.card-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(64, 224, 255, 0.5));
+}
+
+.card-scan-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, transparent 48%, rgba(64, 224, 255, 0.1) 50%, transparent 52%),
+        linear-gradient(0deg, transparent 48%, rgba(64, 224, 255, 0.1) 50%, transparent 52%);
+    animation: scanLines 3s infinite;
+}
+
+.card-footer {
+    margin-top: 2rem;
+}
+
+.progress-line {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #40e0ff, transparent);
+    animation: progressScan 2s infinite;
+}
+
+@keyframes cardShine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+@keyframes scanLines {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes progressScan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Enhanced Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.skill-category {
+    background: rgba(26, 30, 46, 0.6);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(64, 224, 255, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #40e0ff, transparent);
+    animation: skillScan 3s infinite;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    border-color: #40e0ff;
+    box-shadow: 0 10px 30px rgba(64, 224, 255, 0.2);
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.skill-header h4 {
+    color: #40e0ff;
+    font-size: 1.2rem;
+    font-family: 'Fira Code', monospace;
+}
+
+.skill-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #00ff88;
+    box-shadow: 0 0 10px #00ff88;
+    animation: indicatorPulse 2s infinite;
+}
+
+.skill-bar {
+    margin-bottom: 1rem;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-family: 'Fira Code', monospace;
+}
+
+.skill-percentage {
+    color: #40e0ff;
+    font-weight: bold;
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(64, 224, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(45deg, #40e0ff, #0080ff);
+    border-radius: 4px;
+    position: relative;
+    width: 0%;
+    animation: progressLoad 2s ease-out forwards;
+    transition: width 2s ease-out;
+}
+
+.progress-fill[data-width="96"] { animation-delay: 0.1s; --target-width: 96%; }
+.progress-fill[data-width="94"] { animation-delay: 0.2s; --target-width: 94%; }
+.progress-fill[data-width="90"] { animation-delay: 0.3s; --target-width: 90%; }
+.progress-fill[data-width="95"] { animation-delay: 0.4s; --target-width: 95%; }
+.progress-fill[data-width="92"] { animation-delay: 0.5s; --target-width: 92%; }
+.progress-fill[data-width="88"] { animation-delay: 0.6s; --target-width: 88%; }
+.progress-fill[data-width="91"] { animation-delay: 0.7s; --target-width: 91%; }
+.progress-fill[data-width="87"] { animation-delay: 0.8s; --target-width: 87%; }
+.progress-fill[data-width="89"] { animation-delay: 0.9s; --target-width: 89%; }
+.progress-fill[data-width="86"] { animation-delay: 1.0s; --target-width: 86%; }
+.progress-fill[data-width="83"] { animation-delay: 1.1s; --target-width: 83%; }
+
+.progress-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: progressGlow 2s infinite;
+}
+
+@keyframes skillScan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes indicatorPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+@keyframes progressLoad {
+    to { width: var(--target-width); }
+}
+
+@keyframes progressGlow {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Projects Section */
+#projects {
+    position: relative;
+    background: url('biomedical_ai_innovation.png') center center/cover no-repeat;
+    background-blend-mode: lighten;
+    z-index: 1;
+}
+
+#projects::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 14, 26, 0.78); /* overlay for readability */
+    z-index: 0;
+    pointer-events: none;
+}
+
+#projects > .container,
+#projects * {
+    position: relative;
+    z-index: 1;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.project-card {
+    background: rgba(26, 30, 46, 0.8);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(64, 224, 255, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(64, 224, 255, 0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.8s;
+}
+
+.project-card:hover::before {
+    transform: translateX(100%);
+}
+
+.project-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(64, 224, 255, 0.3);
+    border-color: #40e0ff;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.project-icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 10px rgba(64, 224, 255, 0.5));
+}
+
+.project-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+}
+
+.status-light {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: statusBlink 2s infinite;
+}
+
+.status-light.active {
+    background: #00ff88;
+    box-shadow: 0 0 10px #00ff88;
+}
+
+.status-light.research {
+    background: #ffaa00;
+    box-shadow: 0 0 10px #ffaa00;
+}
+
+.project-title {
+    color: #40e0ff;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-family: 'Fira Code', monospace;
+    font-weight: 600;
+}
+
+.project-desc {
+    color: #b0c4de;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+    background: rgba(64, 224, 255, 0.1);
+    color: #40e0ff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(64, 224, 255, 0.3);
+    transition: all 0.3s ease;
+    font-family: 'Fira Code', monospace;
+}
+
+.tech-tag:hover {
+    background: #40e0ff;
+    color: #0a0e1a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(64, 224, 255, 0.3);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    position: relative;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-family: 'Fira Code', monospace;
+    font-weight: 500;
+    overflow: hidden;
+}
+
+.project-link.btn-primary {
+    background: linear-gradient(45deg, #40e0ff, #0080ff);
+    color: #ffffff;
+    border: 1px solid transparent;
+}
+
+.project-link.btn-secondary {
+    background: transparent;
+    color: #40e0ff;
+    border: 1px solid #40e0ff;
+}
+
+.project-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(64, 224, 255, 0.3);
+}
+
+.link-particle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 4px;
+    height: 4px;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: linkParticle 2s infinite;
+}
+
+.project-scan-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #40e0ff, transparent);
+    animation: projectScan 3s infinite;
+}
+
+@keyframes statusBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+@keyframes linkParticle {
+    0% { transform: translateX(0) translateY(-50%); opacity: 1; }
+    100% { transform: translateX(20px) translateY(-50%); opacity: 0; }
+}
+
+@keyframes projectScan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Contact Section */
+#contact {
+    position: relative;
+    background: rgba(16, 20, 32, 0.9);
+    z-index: 1;
+    overflow: hidden;
+}
+
+#contact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50vw; /* covers the entire left half */
+    height: 100%;
+    background:
+        linear-gradient(to right, rgba(16,20,32,0.85) 0%, rgba(16,20,32,0.3) 65%, rgba(16,20,32,0) 100%),
+        url('Photo from Joseph B.jpg') center center/cover no-repeat;
+    opacity: 0.18;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(1.2px);
+    transition: opacity 0.5s;
+}
+
+#contact > .container,
+#contact * {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-info, .contact-form {
+    background: rgba(26, 30, 46, 0.8);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid rgba(64, 224, 255, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-header, .form-header {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(64, 224, 255, 0.2);
+}
+
+.info-header h3, .form-header h3 {
+    color: #40e0ff;
+    font-family: 'Fira Code', monospace;
+    font-size: 1.3rem;
+}
+
+.info-scan-line, .form-scan-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #40e0ff, transparent);
+    animation: infoScan 2s infinite;
+}
+
+.expertise-list {
+    list-style: none;
+    padding: 0;
+}
+
+.expertise-list li {
+    margin-bottom: 0.5rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+
+.list-bullet {
+    color: #40e0ff;
+    margin-right: 0.5rem;
+    text-shadow: 0 0 5px #40e0ff;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: rgba(64, 224, 255, 0.1);
+    border: 1px solid rgba(64, 224, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #40e0ff;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(64, 224, 255, 0.4);
+    background: #40e0ff;
+    color: #0a0e1a;
+}
+
+.social-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(64, 224, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: socialRipple 3s infinite;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #40e0ff;
+    font-weight: 500;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(64, 224, 255, 0.05);
+    border: 1px solid rgba(64, 224, 255, 0.3);
+    border-radius: 10px;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #40e0ff;
+    box-shadow: 0 0 0 2px rgba(64, 224, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.input-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #40e0ff, transparent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.form-group input:focus + .input-border,
+.form-group textarea:focus + .input-border {
+    transform: scaleX(1);
+}
+
+@keyframes infoScan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes socialRipple {
+    0% { width: 0; height: 0; opacity: 1; }
+    100% { width: 60px; height: 60px; opacity: 0; }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    #hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .glitch-text {
+        font-size: 2.5rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .innovation-container {
+        width: 300px;
+        height: 300px;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .matrix-rain {
+        display: none;
+    }
+
+    .ai-streams {
+        opacity: 0.05;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 80px 3% 30px;
+    }
+
+    .glitch-text {
+        font-size: 2rem;
+    }
+
+    .typewriter {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .innovation-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .neural-network {
+        display: none;
+    }
+}
+
+p {
+    Blending a scientific mindset with creative engineering, I specialize in building AI-driven tools for integrative medicine and healthcare. My journey as a PhD in Biomedical Engineering has fueled a passion for transforming complex medical data into actionable insights and user-friendly digital experiences. I thrive at the intersection of research and real-world impact, always seeking new ways to connect technology and human health.
+}
+
+<p>
+    Let’s connect and spark new ideas! Whether you’re interested in collaborating on AI-powered healthcare projects, need a tech partner for your next innovation, or just want to chat about the future of biomedical technology, I’m always excited to hear from fellow visionaries and problem-solvers.
+</p>
+
+<a href="https://discord.com/users/YOUR_DISCORD_ID" class="social-link" title="Discord" target="_blank" rel="noopener">
+    <i class="fab fa-discord"></i>
+    <div class="social-ripple"></div>
+</a>
