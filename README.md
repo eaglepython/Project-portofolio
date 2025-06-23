@@ -1,116 +1,131 @@
-![image](https://github.com/user-attachments/assets/f10ae444-6080-4320-8f93-ecfed79dd10f)
-
-
 
 # Joseph Bidias – AI Research Scientist & Software Engineer Portfolio
 
-A visually compelling portfolio website built with HTML5 and CSS3, showcasing expertise in biomedical AI, integrative medicine, and full-stack software engineering. This project highlights innovation at the intersection of healthcare and intelligent systems.
+🌐 **Live Demo**: [https://project-portofolio-phi.vercel.app](https://project-portofolio-phi.vercel.app)
+
+A visually immersive portfolio built with pure HTML and CSS to showcase my expertise in biomedical AI, integrative medicine, and full-stack software engineering. Designed for maximum impact, this site features matrix-style animations, AI-inspired visuals, and accessibility-first design.
+
+
 
 ## 🚀 Overview
 
-This project was developed as a class portfolio assignment to demonstrate core skills in web development, biomedical research presentation, and design thinking. It features advanced CSS animation effects, accessibility-conscious design, and a mobile-first layout.
+This project is a personal and academic showcase, developed as part of a class project, demonstrating how design, technology, and storytelling can converge to communicate advanced technical skills in a simple and engaging format.
+
+---
 
 ## ✨ Features
 
-### 🧠 Visual Effects
-- **Matrix Rain** binary animation for immersive tech ambiance
-- **Neural Network Nodes** with pulsing and connected visualizations
-- **AI Data Streams** simulating live machine learning pipelines
-- **Glitch & Typewriter Text Effects** for cyberpunk aesthetic
+- 🧠 **Matrix Rain Animation** – Binary code rain background for immersive aesthetics  
+- 🔬 **Neural Network Effects** – Animated AI node connections  
+- 🎯 **Typewriter & Glitch Text** – Real-time animated intro  
+- 💼 **Project Showcase** – Interactive cards with technologies used  
+- 📱 **Mobile-First Design** – Fully responsive on all devices  
+- 🛠 **No JavaScript** – 100% pure HTML + CSS animations  
+- 🌈 **Custom Visual Identity** – Dark theme, floating labels, holographic elements
 
-### 📱 Responsive Design
-- Fully mobile-optimized (iOS, Android, Desktop)
-- Adaptive layout with fluid containers and scalable typography
-- Smooth scroll behavior and reduced-motion fallbacks
+---
 
-### 💡 Professional Highlights
-- Academic and technical summary of Joseph Bidias
-- Expertise cards in AI, cloud, full-stack, and integrative healthcare
-- Project gallery with technology tags and live/demo placeholders
+## 🛠️ Technologies Used
 
-## 🛠️ Tech Stack
+- **HTML5** – Semantic structure and accessibility
+- **CSS3** – Grid, Flexbox, animations, transitions
+- **Font Awesome** – Iconography
+- **Google Fonts** – EB Garamond & Fira Code
+- **Deployed on** – [Vercel](https://vercel.com)
 
-- **HTML5**: Semantic markup, SEO-optimized
-- **CSS3**: Custom animations, grid/flex layouts, effects
-- **Google Fonts**: Fira Code + EB Garamond
-- **Font Awesome**: Icons and social links
+---
 
 ## 📁 Project Structure
 
 ```
 
 portfolio/
-├── index.html                 # Main HTML file
-├── styles.css                # Core CSS styles
-├── profile.jpg               # Profile image
-├── we.png                    # Background visual asset
-├── biomedical\_ai\_innovation.png  # Section backdrop
-├── README.md                 # Project documentation
+├── index.html                   # Main HTML file
+├── styles.css                   # Main CSS file
+├── profile.jpg                  # Profile photo
+├── we.png                       # Background effect
+├── biomedical\_ai\_innovation.png# Section visual
+├── README.md                    # This file
 
-
-
-## ⚙️ Setup Instructions
-
-### Run Locally
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/joseph-bidias/ai-research-portfolio.git
-   cd ai-research-portfolio
 ````
 
-2. Make sure all required images (e.g., `profile.jpg`, `we.png`) are in the project directory.
+---
 
-3. Open the project in your browser:
+## 📦 Setup Instructions
+
+### ✅ View Online  
+Visit the live site here:  
+👉 [https://project-portofolio-phi.vercel.app](https://project-portofolio-phi.vercel.app)
+
+### 🧪 Run Locally  
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/your-repo-name.git
+   cd your-repo-name
+````
+
+2. Open in browser:
 
    ```bash
    open index.html
-   ```
-
-   Or:
-
-   ```bash
+   # or
    python -m http.server 8000
    ```
 
-## 🌐 Live Deployment
+---
 
-You can deploy this portfolio using any static site host:
+## 🧩 Customization Guide
 
-* **GitHub Pages** (Free)
-* **Netlify** (Drag-and-drop or CLI)
-* **Vercel** (Git-based deployment)
+To update personal info:
 
-## 🧩 Customization
+Edit the following in `index.html`:
 
-To personalize:
+```html
+<h1 class="glitch-text" data-text="Joseph Bidias">Joseph Bidias</h1>
+<span class="typewriter-text">Software Engineer & AI Research Scientist</span>
+```
 
-* Update name, title, and description inside `index.html`
-* Replace image assets with your own photos
-* Adjust colors, layout, and animation speed in `styles.css`
+Update project descriptions, skill labels, and images as needed.
 
-## 🔐 Accessibility & SEO
+---
 
-* ARIA labels and semantic tags
-* Keyboard-friendly navigation
-* Mobile-first responsive design
-* Alt attributes on all images
+## 🌐 Browser Compatibility
 
-## 📣 Connect
+* ✅ Chrome, Firefox, Safari, Edge (modern versions)
+* ✅ Android Chrome, iOS Safari
+* ⚠️ Limited support for older browsers like Internet Explorer
 
-Joseph Bidias
-🌐 [LinkedIn](https://linkedin.com/in/joseph-bidias)
-📧 [joseph.bidias@biomedical-ai.com](mailto:joseph.bidias@biomedical-ai.com)
+---
+
+## 🔒 Accessibility & Performance
+
+* Semantic HTML5
+* ARIA labels
+* Keyboard navigable
+* Mobile-first responsiveness
+* `prefers-reduced-motion` support
+
+---
+
+## 📞 Contact
+
+📬 [joseph.bidias@biomedical-ai.com](mailto:joseph.bidias@biomedical-ai.com)
+🔗 [LinkedIn](https://linkedin.com/in/joseph-bidias)
 🐙 [GitHub](https://github.com/joseph-bidias)
-🎓 [Google Scholar](https://scholar.google.com/citations?user=joseph-bidias)
+
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+Licensed under the [MIT License](LICENSE)
 
+---
 
+> © 2025 Joseph Bidias. Built with care, curiosity, and a commitment to bridging AI and healthcare.
 
-> © 2025 Joseph Bidias. Built with passion, vision, and a love for science + software.
+```
 
+---
 
-
+Let me know if you'd like a `LICENSE`, GitHub badges, or to convert this into a GitHub Pages-compatible version too.
+```
