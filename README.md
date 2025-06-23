@@ -108,9 +108,9 @@ Joseph Bidias
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
----
+
 
 > © 2025 Joseph Bidias. Built with passion, vision, and a love for science + software.
 
-```
+
 
