@@ -63,7 +63,7 @@ Visit the live site here:
    ```bash
    git clone https://github.com/YOUR_USERNAME/your-repo-name.git
    cd your-repo-name
-````
+
 
 2. Open in browser:
 
@@ -126,7 +126,4 @@ Licensed under the [MIT License](LICENSE)
 
 ```
 
----
 
-Let me know if you'd like a `LICENSE`, GitHub badges, or to convert this into a GitHub Pages-compatible version too.
-```
