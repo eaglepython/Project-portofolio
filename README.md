@@ -44,6 +44,7 @@ portfolio/
 ├── index.html                   # Main HTML file
 ├── styles.css                   # Main CSS file
 ├── profile.jpg                  # Profile photo
+├── photo from Joseph B.jpg      # backgroung effect 
 ├── we.png                       # Background effect
 ├── biomedical\_ai\_innovation.png# Section visual
 ├── README.md                    # This file
