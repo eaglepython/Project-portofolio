@@ -1572,15 +1572,10 @@ body::before {
     }
 }
 
+/* Style for paragraph elements */
 p {
-    Blending a scientific mindset with creative engineering, I specialize in building AI-driven tools for integrative medicine and healthcare. My journey as a PhD in Biomedical Engineering has fueled a passion for transforming complex medical data into actionable insights and user-friendly digital experiences. I thrive at the intersection of research and real-world impact, always seeking new ways to connect technology and human health.
+    font-size: 1.1rem;
+    color: #b0c4de;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
 }
-
-<p>
-    Let’s connect and spark new ideas! Whether you’re interested in collaborating on AI-powered healthcare projects, need a tech partner for your next innovation, or just want to chat about the future of biomedical technology, I’m always excited to hear from fellow visionaries and problem-solvers.
-</p>
-
-<a href="https://discord.com/users/YOUR_DISCORD_ID" class="social-link" title="Discord" target="_blank" rel="noopener">
-    <i class="fab fa-discord"></i>
-    <div class="social-ripple"></div>
-</a>
