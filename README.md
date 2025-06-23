@@ -50,7 +50,7 @@ portfolio/
 
 ````
 
----
+
 
 ## 📦 Setup Instructions
 
@@ -73,7 +73,7 @@ Visit the live site here:
    python -m http.server 8000
    ```
 
----
+
 
 ## 🧩 Customization Guide
 
