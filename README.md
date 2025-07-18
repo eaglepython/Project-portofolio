@@ -1,5 +1,5 @@
 
-# Joseph Bidias – AI Research Scientist & Software Engineer Portfolio
+# Joseph Bidias –Quantitative Researcher & Software Engineer Portfolio
 
 🌐 **Live Demo**: [https://project-portofolio-4ek3-8slvpw4ip-eaglepythons-projects.vercel.app](https://project-portofolio-4ek3-8slvpw4ip-eaglepythons-projects.vercel.app)
 
