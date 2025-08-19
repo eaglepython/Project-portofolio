@@ -508,3 +508,331 @@ Keep building, keep learning, and remember - every expert was once a beginner! �
 - **Tailwind CSS**: https://tailwindcss.com/docs
 
 **Remember**: The best way to learn is by building. Take this foundation and make it your own! 💫
+
+
+
+
+
+
+import React, { useState, useEffect } from 'react';
+import { Search, MapPin, Wind, Droplets, Eye, Thermometer, Sun, Moon, Cloud, CloudRain, CloudSnow, Zap } from 'lucide-react';
+
+// Weather API Service - handles all API calls
+const WeatherAPI = {
+  BASE_URL: 'https://api.openweathermap.org/data/2.5',
+  API_KEY: 'YOUR_API_KEY_HERE', // Replace with your actual API key
+  
+  // Fetch weather by city name
+  async fetchWeatherByCity(city) {
+    const url = `${this.BASE_URL}/weather?q=${city}&appid=${this.API_KEY}&units=metric`;
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      throw new Error('City not found');
+    }
+    
+    return response.json();
+  },
+  
+  // Fetch weather by coordinates
+  async fetchWeatherByCoords(lat, lon) {
+    const url = `${this.BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${this.API_KEY}&units=metric`;
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      throw new Error('Weather data not available');
+    }
+    
+    return response.json();
+  }
+};
+
+// Utility function to get appropriate weather icon
+const getWeatherIcon = (weatherCode, isDay = true) => {
+  const iconProps = { size: 40, className: "text-white drop-shadow-lg" };
+  
+  switch (weatherCode) {
+    case '01d':
+    case '01n':
+      return isDay ? <Sun {...iconProps} /> : <Moon {...iconProps} />;
+    case '02d':
+    case '02n':
+    case '03d':
+    case '03n':
+    case '04d':
+    case '04n':
+      return <Cloud {...iconProps} />;
+    case '09d':
+    case '09n':
+    case '10d':
+    case '10n':
+      return <CloudRain {...iconProps} />;
+    case '11d':
+    case '11n':
+      return <Zap {...iconProps} />;
+    case '13d':
+    case '13n':
+      return <CloudSnow {...iconProps} />;
+    default:
+      return <Sun {...iconProps} />;
+  }
+};
+
+// Header Component - displays app title and search functionality
+const Header = ({ onSearch, isLoading }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+      onSearch(searchTerm.trim());
+      setSearchTerm('');
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  return (
+    <div className="text-center mb-8">
+      <h1 className="text-4xl font-bold text-white mb-2 drop-shadow-lg">
+        Kairos
+      </h1>
+      <p className="text-blue-100 mb-6 text-lg">
+        καιρός - The Perfect Moment for Weather
+      </p>
+      
+      <div className="max-w-md mx-auto relative">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyPress={handleKeyPress}
+          placeholder="Enter city name..."
+          disabled={isLoading}
+          className="w-full px-4 py-3 pr-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+        />
+        <button
+          onClick={handleSearch}
+          disabled={isLoading || !searchTerm.trim()}
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-white/20 hover:bg-white/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+        >
+          <Search size={20} className="text-white" />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// Main Weather Card - displays current weather information
+const WeatherCard = ({ weatherData }) => {
+  if (!weatherData) return null;
+
+  const { main, weather, name, sys, wind, visibility } = weatherData;
+  const currentWeather = weather[0];
+  const temperature = Math.round(main.temp);
+  const feelsLike = Math.round(main.feels_like);
+
+  return (
+    <div className="bg-white/20 backdrop-blur-md rounded-3xl p-8 border border-white/30 shadow-2xl">
+      {/* Location and main weather */}
+      <div className="text-center mb-8">
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <MapPin size={20} className="text-white/80" />
+          <h2 className="text-2xl font-semibold text-white">
+            {name}, {sys.country}
+          </h2>
+        </div>
+        
+        <div className="flex items-center justify-center gap-4 mb-4">
+          {getWeatherIcon(currentWeather.icon)}
+          <div className="text-6xl font-bold text-white drop-shadow-lg">
+            {temperature}°
+          </div>
+        </div>
+        
+        <p className="text-blue-100 text-xl capitalize mb-2">
+          {currentWeather.description}
+        </p>
+        <p className="text-blue-200">
+          Feels like {feelsLike}°C
+        </p>
+      </div>
+
+      {/* Weather details grid */}
+      <div className="grid grid-cols-2 gap-4">
+        <WeatherDetail
+          icon={<Wind size={24} />}
+          label="Wind Speed"
+          value={`${wind.speed} m/s`}
+        />
+        <WeatherDetail
+          icon={<Droplets size={24} />}
+          label="Humidity"
+          value={`${main.humidity}%`}
+        />
+        <WeatherDetail
+          icon={<Thermometer size={24} />}
+          label="Pressure"
+          value={`${main.pressure} hPa`}
+        />
+        <WeatherDetail
+          icon={<Eye size={24} />}
+          label="Visibility"
+          value={`${Math.round(visibility / 1000)} km`}
+        />
+      </div>
+    </div>
+  );
+};
+
+// Weather Detail Component - reusable component for weather metrics
+const WeatherDetail = ({ icon, label, value }) => {
+  return (
+    <div className="bg-white/10 rounded-2xl p-4 text-center border border-white/20">
+      <div className="text-white/80 mb-2 flex justify-center">
+        {icon}
+      </div>
+      <div className="text-white/70 text-sm mb-1">{label}</div>
+      <div className="text-white font-semibold text-lg">{value}</div>
+    </div>
+  );
+};
+
+// Loading Component - shows loading state
+const LoadingSpinner = () => {
+  return (
+    <div className="flex flex-col items-center justify-center py-12">
+      <div className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin mb-4"></div>
+      <p className="text-white/80 text-lg">Gathering weather data...</p>
+    </div>
+  );
+};
+
+// Error Component - displays error messages
+const ErrorMessage = ({ message, onRetry }) => {
+  return (
+    <div className="bg-red-500/20 backdrop-blur-sm rounded-2xl p-6 border border-red-400/30 text-center">
+      <div className="text-red-200 text-lg mb-4">⚠️ {message}</div>
+      <button
+        onClick={onRetry}
+        className="px-6 py-2 bg-white/20 hover:bg-white/30 text-white rounded-full transition-all duration-200"
+      >
+        Try Again
+      </button>
+    </div>
+  );
+};
+
+// Location Button - for getting user's current location
+const LocationButton = ({ onLocationRequest, isLoading }) => {
+  return (
+    <div className="text-center mt-6">
+      <button
+        onClick={onLocationRequest}
+        disabled={isLoading}
+        className="px-6 py-3 bg-white/20 hover:bg-white/30 text-white rounded-full border border-white/30 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 mx-auto"
+      >
+        <MapPin size={18} />
+        Use My Location
+      </button>
+    </div>
+  );
+};
+
+// Main App Component
+const KairosWeatherApp = () => {
+  // State management using React hooks
+  const [weatherData, setWeatherData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Function to fetch weather data by city
+  const fetchWeatherByCity = async (city) => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const data = await WeatherAPI.fetchWeatherByCity(city);
+      setWeatherData(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Function to get user's current location
+  const getCurrentLocationWeather = () => {
+    if (!navigator.geolocation) {
+      setError('Geolocation is not supported by this browser');
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+          const data = await WeatherAPI.fetchWeatherByCoords(latitude, longitude);
+          setWeatherData(data);
+        } catch (err) {
+          setError('Failed to get weather for your location');
+        } finally {
+          setIsLoading(false);
+        }
+      },
+      () => {
+        setError('Unable to access your location');
+        setIsLoading(false);
+      }
+    );
+  };
+
+  // Effect hook to load default weather on app start
+  useEffect(() => {
+    fetchWeatherByCity('Athens'); // Default to Athens, Greece (fitting for Kairos!)
+  }, []);
+
+  // Function to retry after error
+  const handleRetry = () => {
+    setError(null);
+    fetchWeatherByCity('Athens');
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 p-4">
+      <div className="max-w-lg mx-auto">
+        {/* Header with search */}
+        <Header onSearch={fetchWeatherByCity} isLoading={isLoading} />
+        
+        {/* Main content area */}
+        <div className="mb-6">
+          {isLoading && <LoadingSpinner />}
+          {error && <ErrorMessage message={error} onRetry={handleRetry} />}
+          {weatherData && !isLoading && !error && (
+            <WeatherCard weatherData={weatherData} />
+          )}
+        </div>
+        
+        {/* Location button */}
+        <LocationButton 
+          onLocationRequest={getCurrentLocationWeather} 
+          isLoading={isLoading} 
+        />
+        
+        {/* Footer */}
+        <div className="text-center mt-8 text-white/60 text-sm">
+          <p>Powered by OpenWeatherMap</p>
+          <p className="mt-2">Kairos - Finding the perfect moment in weather</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default KairosWeatherApp;
